@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import type {Member} from "../types/Member";
 import {useAuth} from "../context/AuthContext";
 import {API_URLS} from "../api/urls";
-import "../styles/Modal.css";
+import "../styles/modal.css";
 
 interface AuthFormProps {
     mode: "login" | "register";

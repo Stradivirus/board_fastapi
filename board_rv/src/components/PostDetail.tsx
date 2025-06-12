@@ -5,7 +5,7 @@ import {API_URLS} from "../api/urls";
 import {formatDate} from "../utils/formatDate";
 import {useAuth} from "../context/AuthContext";
 import "../styles/Board.css";
-import "../styles/Modal.css";
+import "../styles/modal.css";
 
 const RecentPostList: React.FC<{ excludeId?: string }> = ({excludeId}) => {
     const [posts, setPosts] = useState<Post[]>([]);
