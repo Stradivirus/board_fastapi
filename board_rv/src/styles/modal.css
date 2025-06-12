@@ -1,0 +1,149 @@
+/* ===== 모달 공통 ===== */
+.modal-backdrop {
+    position: fixed;
+    left: 0; top: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(40, 60, 120, 0.14); /* 기존 그림자 계열과 통일 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: modal-fade-in 0.22s;
+}
+
+@keyframes modal-fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.modal {
+    background: #fff;
+    padding: 32px 38px;
+    border-radius: 14px;
+    box-shadow: 0 4px 24px rgba(40,60,120,0.14), 0 1.5px 6px rgba(44, 53, 80, 0.10);
+    min-width: 320px;
+    max-width: 96vw;
+    text-align: center;
+    font-family: inherit;
+    transition: box-shadow 0.18s;
+    position: relative;
+}
+
+.modal-message {
+    font-size: 1.12rem;
+    font-weight: 600;
+    color: #22223b;
+    margin-bottom: 18px;
+}
+
+.modal-btn-group {
+    margin-top: 18px;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.board-btn, .modal .board-btn {
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 28px;
+    font-size: 1.09rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(44, 53, 80, 0.08);
+    transition: background 0.15s, color 0.15s;
+}
+
+.board-btn.cancel, .modal .board-btn.cancel {
+    background: #f3f6fa;
+    color: #2c3550;
+    border: 1.5px solid #bfc8e2;
+}
+
+.board-btn:not(.cancel):hover, .modal .board-btn:not(.cancel):hover {
+    background: #1e429f;
+}
+
+.board-btn.cancel:hover, .modal .board-btn.cancel:hover {
+    background: #e5e7eb;
+    color: #2563eb;
+}
+
+@media (max-width: 600px) {
+    .modal {
+        min-width: 90vw;
+        padding: 18px 6vw;
+    }
+}
+
+/* ===== 마우스 위치에 따라 뜨는 모달 ===== */
+.modal-follow {
+    background: #fff;
+    border: 1.5px solid #bfc8e2;
+    border-radius: 12px;
+    box-shadow: 0 6px 24px rgba(44, 53, 80, 0.18), 0 1.5px 6px rgba(44, 53, 80, 0.10);
+    padding: 28px 36px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    min-width: 220px;
+    min-height: 70px;
+    transition: box-shadow 0.2s;
+    font-size: 1.18rem;
+}
+
+.modal-follow .board-btn {
+    font-size: 1.08rem;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(44, 53, 80, 0.08);
+    transition: background 0.15s, color 0.15s;
+}
+
+.modal-follow .board-btn.cancel {
+    background: #f3f6fa;
+    color: #2c3550;
+    border: 1.5px solid #bfc8e2;
+}
+
+.modal-follow .board-btn:not(.cancel) {
+    background: #3a5afe;
+    color: #fff;
+    border: none;
+}
+
+.modal-follow .board-btn:hover {
+    filter: brightness(0.97);
+    box-shadow: 0 4px 16px rgba(44, 53, 80, 0.13);
+}
+
+.modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal-input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1.5px solid #bfc8e2;
+    border-radius: 7px;
+    font-size: 1rem;
+    margin-bottom: 4px;
+    outline: none;
+    transition: border 0.16s;
+}
+.modal-input:focus {
+    border: 1.5px solid #2563eb;
+    background: #f3f6fa;
+}
+
+.modal-result {
+    margin-top: 8px;
+    color: #555;
+    font-size: 0.97rem;
+    min-height: 20px;
+}

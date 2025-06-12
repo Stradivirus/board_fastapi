@@ -1,0 +1,393 @@
+body {
+    background: #f6f7fb;
+    font-family: 'Pretendard', 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===== 공통 컨테이너 ===== */
+.board-container,
+.board-detail-container,
+.board-form-container {
+    max-width: 1200px;
+    margin: 48px auto 0 auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(40,60,120,0.10);
+    box-sizing: border-box;
+
+}
+
+.board-container {
+    padding: 32px 40px 40px 40px;
+}
+
+.board-detail-container {
+    padding: 36px 44px 44px 44px;
+}
+
+.board-form-container {
+    width: 60%;
+    padding: 36px 46px 40px 32px;
+}
+
+/* ===== 헤더 ===== */
+.board-header,
+.board-main {
+    width: 70%;
+    margin: 40px auto 0 auto;
+    padding-left: 32px;
+    padding-right: 32px;
+}
+
+.board-header {
+    background: linear-gradient(90deg, #e0e7ef 60%, #f6f7fb 100%);
+    border-radius: 10px 10px 0 0;
+    padding-top: 32px;
+    padding-bottom: 24px;
+    box-sizing: border-box;
+    margin-bottom: 0;
+    box-shadow: 0 2px 8px rgba(40,60,120,0.06);
+}
+
+.board-header h1 {
+    margin: 0;
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: #2563eb;
+    letter-spacing: -1px;
+}
+
+.board-header p {
+    color: #6b7280;
+    margin-top: 10px;
+    font-size: 1.15rem;
+}
+
+/* ===== 메인 ===== */
+.board-main {
+    background: #fff;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 16px rgba(40,60,120,0.10);
+    padding-top: 32px;
+    padding-bottom: 40px;
+    box-sizing: border-box;
+    margin: 48px auto 0 auto;
+}
+
+/* ===== 리스트 ===== */
+.board-title-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+.board-title-bar h2 {
+    margin: 0;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #2c3550;
+    letter-spacing: -1px;
+}
+
+.board-title-bar .board-write-btn {
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 24px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.18s;
+}
+.board-title-bar .board-write-btn:hover {
+    background: #1e429f;
+}
+
+.board-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 28px;
+}
+
+.board-table thead {
+    background: #f0f4fa;
+}
+.board-table th, .board-table td {
+    padding: 14px 10px;
+    text-align: left;
+    font-size: 1.05rem;
+}
+.board-table th {
+    color: #4b5563;
+    font-weight: 700;
+    border-bottom: 2px solid #e5e7eb;
+}
+.board-table td {
+    border-bottom: 1px solid #e5e7eb;
+    color: #22223b;
+}
+.board-table tr:hover td {
+    background: #f3f6fa;
+}
+.board-table .board-post-title-link {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.18s;
+}
+.board-table .board-post-title-link:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+}
+.board-table .board-post-author {
+    color: #6b7280;
+    font-size: 0.98rem;
+}
+.board-table .board-post-date {
+    color: #a1a1aa;
+    font-size: 0.97rem;
+}
+.board-table .board-post-views {
+    color: #64748b;
+    text-align: center;
+    font-size: 1rem;
+}
+.board-table th, .board-table td {
+    padding: 8px 12px;
+    text-align: left;
+    vertical-align: top;
+}
+.board-table td {
+    max-width: 400px;
+    word-break: break-all;
+    white-space: pre-wrap;
+}
+
+/* ===== 상세 ===== */
+.board-detail-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #22223b;
+    margin-bottom: 10px;
+}
+.board-detail-title-strong {
+    font-size: 2.1rem;
+    font-weight: 800;
+    color: #2563eb;
+    margin-bottom: 18px;
+    letter-spacing: -1px;
+}
+.board-detail-meta {
+    color: #6b7280;
+    font-size: 1rem;
+    margin-bottom: 24px;
+}
+.board-detail-meta-flex {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    color: #6b7280;
+    font-size: 1.08rem;
+    margin-bottom: 18px;
+    border-bottom: 1.5px solid #e0e7ef;
+    padding-bottom: 12px;
+}
+.board-detail-content {
+    font-size: 1.5rem;
+    color: #2d2d3a;
+    line-height: 1.7;
+    margin-bottom: 32px;
+    white-space: pre-line;
+}
+.board-detail-content-bg {
+    font-size: 1.18rem;
+    color: #22223b;
+    line-height: 1.8;
+    margin: 32px 0 40px 0;
+    min-height: 120px;
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 28px 22px;
+    white-space: pre-line;
+    box-shadow: 0 2px 8px rgba(40,60,120,0.06);
+}
+.board-detail-btn-group {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+.board-detail-btn-group-right {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-top: 8px;
+}
+.board-detail-btn-group button, .board-detail-btn-group .board-btn {
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 18px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.18s;
+}
+.board-detail-btn-group button:hover, .board-detail-btn-group .board-btn:hover {
+    background: #1e429f;
+}
+.board-detail-btn-group .board-btn.cancel {
+    background: #e5e7eb;
+    color: #2563eb;
+}
+.board-detail-btn-group .board-btn.cancel:hover {
+    background: #d1d5db;
+}
+
+/* ===== 폼 ===== */
+.board-form-title {
+    margin-top: 0;
+    margin-bottom: 24px;
+    font-size: 2rem;
+    color: #2c3550;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 12px;
+}
+.board-form-title::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, #e0e7ef 60%, #f6f7fb 100%);
+    opacity: 0.8;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.board-form-label {
+    font-weight: 600;
+    color: #444;
+    display: block;
+    margin-bottom: 5px;
+}
+.board-form-label.board-content-label {
+    position: relative;
+    margin-top: 24px;
+    padding-top: 16px;
+}
+.board-form-label.board-content-label::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, #e0e7ef 60%, #f6f7fb 100%);
+    opacity: 0.8;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.board-form-input, .board-form-textarea {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 18px;
+    border: 1px solid #d1d1d6;
+    border-radius: 5px;
+    font-size: 1rem;
+    background: #fafbfc;
+    transition: border 0.2s;
+}
+.board-form-input:focus, .board-form-textarea:focus {
+    border: 1.5px solid #2563eb;
+    outline: none;
+}
+.board-form-textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+.board-form-btn-group {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+}
+.board-form-btn-group--right {
+    justify-content: flex-end;
+}
+.board-form-btn-group button,
+.board-form-btn-group .board-btn {
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 18px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.18s;
+    min-width: 30px;
+}
+.board-form-btn-group button:hover,
+.board-form-btn-group .board-btn:hover {
+    background: #1e429f;
+}
+.board-form-btn-group .board-btn.cancel {
+    background: #e5e7eb;
+    color: #2563eb;
+}
+.board-form-btn-group .board-btn.cancel:hover {
+    background: #d1d5db;
+}
+
+/* ===== 페이지네이션 ===== */
+.board-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 18px;
+}
+.board-pagination button {
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 7px 18px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.18s;
+}
+.board-pagination button:disabled {
+    background: #e5e7eb;
+    color: #b1b5c0;
+    cursor: not-allowed;
+}
+.board-pagination button:not(:disabled):hover {
+    background: #1e429f;
+}
+
+/* ===== 반응형 ===== */
+@media (max-width: 900px) {
+    .board-header,
+    .board-main,
+    .board-form-container {
+        width: 98%;
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+}
+
+@media (max-width: 700px) {
+    .board-header, .board-main, .board-form-container {
+        padding: 14px 4px 14px 4px;
+    }
+}
+
+@media (max-width: 700px) {
+    .board-container, .board-detail-container, .board-form-container {
+        padding: 18px 4px 22px 4px;
+    }
+    .board-form-container {
+        padding: 16px 4px 22px 4px;
+    }
+}

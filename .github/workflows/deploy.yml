@@ -1,0 +1,45 @@
+name: Deploy to Oracle Cloud
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'board_rv/**'  # board_rv 폴더 변경사항 감지
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: "contains(github.event.head_commit.message, '[up]')"
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      - name: Install dependencies
+        working-directory: ./board_rv
+        run: npm install
+        
+      - name: Build
+        working-directory: ./board_rv
+        run: npm run build
+
+      # AWS 관련 단계 삭제 후 Oracle Cloud 배포 단계 추가
+      - name: Prepare SSH Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_KEY" > ~/.ssh/oracle_rsa
+          chmod 600 ~/.ssh/oracle_rsa
+          echo "StrictHostKeyChecking no" >> ~/.ssh/config
+        env:
+          SSH_KEY: ${{ secrets.ORACLE_SSH_KEY }}
+
+      - name: Deploy via SCP
+        run: |
+          scp -i ~/.ssh/oracle_rsa -o UserKnownHostsFile=/dev/null -r board_rv/dist/* ${{ secrets.SSH_USER }}@${{ secrets.ORACLE_SERVER_IP }}:/var/www/html3
+          ssh -i ~/.ssh/oracle_rsa ${{ secrets.SSH_USER }}@${{ secrets.ORACLE_SERVER_IP }} "sudo systemctl reload nginx"
