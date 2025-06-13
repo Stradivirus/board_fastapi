@@ -15,7 +15,7 @@ const App: React.FC = () => (
                 <Routes>
                     <Route path="/" element={<Home/>}/>
                     <Route path="/posts/:id" element={<PostPage/>}/>
-                    <Route path="/posts/:id/edit" element={<PostForm isEdit={true}/>}/>
+                    <Route path="/posts/:id/edit" element={<PostForm isEdit />} />
                     <Route path="/new" element={<PostNewPage/>}/>
                 </Routes>
             </main>

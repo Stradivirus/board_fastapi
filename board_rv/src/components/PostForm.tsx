@@ -35,8 +35,9 @@ const PostForm: React.FC<Props> = ({isEdit}) => {
 
     useEffect(() => {
         if (isEdit && id && user) {
+            console.log("수정폼 id:", id); // 추가
             setError(null);
-            fetch(`${API_URLS.POST(id)}/edit`)
+            fetch(API_URLS.POST(id))
                 .then(res => {
                     if (!res.ok) throw new Error("글 정보를 불러오지 못했습니다.");
                     return res.json();

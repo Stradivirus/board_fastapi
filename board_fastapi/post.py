@@ -2,7 +2,7 @@ from fastapi import APIRouter, HTTPException, Query
 from datetime import date, time, datetime
 from bson.objectid import ObjectId
 from db import board_collection, member_collection
-from models import BoardCreateRequest, BoardResponse
+from models import BoardCreateRequest, BoardUpdateRequest, BoardResponse
 
 router = APIRouter()
 
@@ -106,6 +106,45 @@ def get_post(id: str):
         deletedTime=time.fromisoformat(b["deletedTime"]) if b.get("deletedTime") else None
     )
 
+@router.put("/api/posts/{id}", response_model=BoardResponse)
+def update_post(id: str, req: BoardUpdateRequest):
+    # 게시글 존재 확인
+    b = board_collection.find_one({"_id": ObjectId(id)})
+    if not b or b.get("deleted"):
+        raise HTTPException(404, "게시글을 찾을 수 없습니다.")
+
+    # 작성자 확인
+    member = member_collection.find_one({"userId": req.userId})
+    if not member:
+        raise HTTPException(404, "작성자를 찾을 수 없습니다.")
+
+    if str(member["_id"]) != b["writerId"]:
+        raise HTTPException(403, "작성자만 수정할 수 있습니다.")
+
+    # 게시글 수정
+    board_collection.update_one(
+        {"_id": ObjectId(id)},
+        {"$set": {
+            "title": req.title,
+            "content": req.content,
+        }}
+    )
+    # 수정된 게시글 다시 조회
+    updated = board_collection.find_one({"_id": ObjectId(id)})
+    return BoardResponse(
+        id=str(updated["_id"]),
+        title=updated["title"],
+        content=updated["content"],
+        writerId=updated["writerId"],
+        writerNickname=updated["writerNickname"],
+        viewCount=updated["viewCount"],
+        createdDate=date.fromisoformat(updated["createdDate"]),
+        createdTime=time.fromisoformat(updated["createdTime"]),
+        deleted=updated.get("deleted", False),
+        deletedDate=date.fromisoformat(updated["deletedDate"]) if updated.get("deletedDate") else None,
+        deletedTime=time.fromisoformat(updated["deletedTime"]) if updated.get("deletedTime") else None
+    )
+
 @router.delete("/api/posts/{id}")
 def delete_post(id: str):
     b = board_collection.find_one({"_id": ObjectId(id)})
@@ -121,3 +160,4 @@ def delete_post(id: str):
         }}
     )
     return {"message": "삭제되었습니다."}
+

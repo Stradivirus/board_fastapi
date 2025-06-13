@@ -24,6 +24,11 @@ class BoardCreateRequest(BaseModel):
     content: str
     userId: str
 
+class BoardUpdateRequest(BaseModel):
+    title: str
+    content: str
+    userId: str
+
 class BoardResponse(BaseModel):
     id: str
     title: str
