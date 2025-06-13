@@ -39,7 +39,7 @@ jobs:
         env:
           SSH_KEY: ${{ secrets.ORACLE_SSH_KEY }}
 
-      - name: Deploy via SCP
+      - name: Deploy via rsync
         run: |
-          scp -i ~/.ssh/oracle_rsa -o UserKnownHostsFile=/dev/null -r board_rv/dist/* ${{ secrets.SSH_USER }}@${{ secrets.ORACLE_SERVER_IP }}:/var/www/html3/
-          ssh -i ~/.ssh/oracle_rsa ${{ secrets.SSH_USER }}@${{ secrets.ORACLE_SERVER_IP }} "sudo systemctl reload nginx"
+          scp -i ~/.ssh/oracle_rsa -o UserKnownHostsFile=/dev/null -r board_rv/dist/* ${{ secrets.SSH_USER }}@${{ secrets.ORACLE_SERVER_IP }}:~/deploy_tmp/
+          ssh -i ~/.ssh/oracle_rsa ${{ secrets.SSH_USER }}@${{ secrets.ORACLE_SERVER_IP }} "sudo rsync -av --delete ~/deploy_tmp/ /var/www/html3/ && sudo systemctl reload nginx"

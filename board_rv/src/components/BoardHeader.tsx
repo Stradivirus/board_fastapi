@@ -16,7 +16,7 @@ const BoardHeader: React.FC = () => {
 
     const handleProfileClick = () => {
         // 추후 마이페이지/프로필 기능 연결
-        alert("프로필 기능은 추후 추가됩니다.");
+        alert("프로필 기능은 추후에 추가됩니다.");
     };
 
     return (
