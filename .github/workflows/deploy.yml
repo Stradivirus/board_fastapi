@@ -42,4 +42,4 @@ jobs:
       - name: Deploy via SCP
         run: |
           scp -i ~/.ssh/oracle_rsa -o UserKnownHostsFile=/dev/null -r board_rv/dist/* ${{ secrets.SSH_USER }}@${{ secrets.ORACLE_SERVER_IP }}:~/deploy_tmp/
-          ssh -i ~/.ssh/oracle_rsa ${{ secrets.SSH_USER }}@${{ secrets.ORACLE_SERVER_IP }} "sudo mkdir -p /var/www/html3 && sudo mv ~/deploy_tmp/* /var/www/html3/ && sudo systemctl reload nginx"
+          ssh -i ~/.ssh/oracle_rsa ${{ secrets.SSH_USER }}@${{ secrets.ORACLE_SERVER_IP }} "sudo rm -rf /var/www/html3/* && sudo mv ~/deploy_tmp/* /var/www/html3/ && sudo systemctl reload nginx"
