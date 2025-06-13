@@ -123,6 +123,7 @@ const PostForm: React.FC<Props> = ({isEdit}) => {
                             onChange={handleChange}
                             required
                             placeholder="제목을 입력하세요"
+                            maxLength={100} // ← 추가
                         />
                     </label>
                     <label className="board-form-label board-content-label" htmlFor="content">

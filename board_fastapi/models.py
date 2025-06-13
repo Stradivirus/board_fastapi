@@ -1,4 +1,4 @@
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, constr
 from datetime import date, time
 from typing import Optional
 
@@ -20,13 +20,13 @@ class MemberResponse(BaseModel):
     joinedAt: date
 
 class BoardCreateRequest(BaseModel):
-    title: str
-    content: str
+    title: constr(max_length=100)    # 제목 최대 100자
+    content: constr(max_length=2000) # 내용 최대 2000자
     userId: str
 
 class BoardUpdateRequest(BaseModel):
-    title: str
-    content: str
+    title: constr(max_length=100)
+    content: constr(max_length=2000)
     userId: str
 
 class BoardResponse(BaseModel):
